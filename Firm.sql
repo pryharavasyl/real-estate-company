@@ -317,3 +317,77 @@ values
 (1049, 'ÌÄ994643'),
 (1049, 'ÌÌ325846'),
 (1050, 'ÕÃ128607')
+
+create table agreements
+(agreement_number int primary key not null,
+id_rieltor int not null,
+client_passport_give nvarchar(8) not null,
+client_passport_take nvarchar(8) not null,
+id_object int not null
+constraint f_rieltor_agr foreign key (id_rieltor) references rieltors (id_rieltor),
+constraint f_client_give_agr foreign key (client_passport_give) references clients (client_passport),
+constraint f_client_take_agr foreign key (client_passport_take) references clients (client_passport),
+constraint f_object_agr foreign key (id_object) references realty (id_object))
+
+insert into agreements
+values
+(1, 2001, 'ÒÌ423423', 'ÏÐ229521', 1035),
+(2, 2005, 'ÊÊ583229', 'ÐÎ129096', 1001),
+(3, 2001, 'ªÏ943691', 'ÒÌ873856', 1005),
+(4, 2010, 'ÌÄ994643', 'ÇÎ998832', 1009),
+(5, 2015, 'ÀÊ464296', 'ÅÏ420618', 1014),
+(6, 2017, 'ËÎ892635', 'ÑÂ384536', 1017),
+(7, 2019, '²Ð599733', 'ÔÂ376228', 1006),
+(8, 2003, 'ÍÎ180875', 'ÅÊ812201', 1007),
+(9, 2020, 'ÌÌ325846', 'ÃÕ466415', 1026),
+(10, 2005, 'ÑÒ174454', 'ÞÄ909139', 1028),
+(11, 2015, 'ÊÑ561440', 'ÍÒ158488', 1030),
+(12, 2016, 'ÂÀ955103', 'ÀØ432549', 1022),
+(13, 2018, 'ËÊ644320', 'ÒÒ820148', 1031),
+(14, 2002, 'ÄÅ736880', 'ÐÐ151497', 1036),
+(15, 2007, 'ÌÄ994643', '²Ð599733', 1039),
+(16, 2017, 'ÂË501619', 'ËÎ891708', 1040),
+(17, 2004, 'ÐÌ860900', 'ËÎ892635', 1042),
+(18, 2010, 'ÌÄ994643', 'ÈÑ235959', 1045),
+(19, 2015, 'ÊÌ403775', 'ÊÊ583229', 1041),
+(20, 2001, 'ÎÏ127182', 'ÌÌ325846', 1046),
+(21, 2017, 'ÒË550020', 'ÍÎ981422', 1047),
+(22, 2011, 'ÄÅ736880', 'ÌÌ753493', 1033),
+(23, 2017, 'ÐÂ634023', 'ËÊ644320', 1038),
+(24, 2003, 'ÂÑ264110', 'ÌÒ226000', 1003),
+(25, 2008, 'ÊÊ583229', 'ÍÔ834452', 1008),
+(26, 2020, 'ÐÐ151497', 'ÊÖ119647', 1011),
+(27, 2012, 'ÊÌ403775', 'ÕÃ128607', 1015),
+(28, 2001, 'ÒÌ423423', 'ÖÓ751315', 1020),
+(29, 2004, 'ÍÀ600677', 'ÂË615359', 1023),
+(30, 2009, 'ªÏ943691', 'ÂÑ264110', 1018)
+
+alter table agreements
+add agreement_date date null
+
+update agreements
+set agreement_date='01.01.2000'
+where agreement_date is null
+
+delete from agreements
+where id_object=1023
+
+delete from agreements
+where id_rieltor=2019
+
+update agreements
+set client_passport_take='ÔÂ376228'
+where id_object=1033
+
+update agreements
+set id_rieltor=2004
+where client_passport_give='ÊÌ403775'
+
+update agreements
+set agreement_date='10.12.2017'
+where id_rieltor=2001
+
+update agreements
+set agreement_date='07.12.2017'
+where id_rieltor>2015
+
