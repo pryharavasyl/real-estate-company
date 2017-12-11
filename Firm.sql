@@ -391,3 +391,17 @@ update agreements
 set agreement_date='07.12.2017'
 where id_rieltor>2015
 
+select *
+from agreements
+
+select second_name, first_name, middle_name
+from rieltors
+where premium >= '20'
+
+select second_name, first_name, phone_number
+from clients
+where certificate_of_income = '+' and sex = 'чол'
+
+select count(id_object) as amount
+from realty
+where type_object = 'apartment' and sell_or_rent = 'rent' and price <= '400' and adress_city = 'lviv'
