@@ -1,10 +1,13 @@
 create database firm
 On (Name = firm_dat,
-Filename = 'C:\firm.mdf')
+Filename = 'D:\firm.mdf')
 Log on (Name = firm_log,
-Filename = 'C:\firm.ldf')
+Filename = 'D:\firm.ldf')
 
+go
 use firm
+go
+
 create table rieltors
 (id_rieltor int primary key not null,
 second_name nvarchar(20) not null,
@@ -394,6 +397,8 @@ where id_rieltor>2015
 select *
 from agreements
 
+//Знайти ріелторів, які мають премію більшу 20%
+
 select second_name, first_name, middle_name
 from rieltors
 where premium >= '20'
@@ -402,6 +407,18 @@ select second_name, first_name, phone_number
 from clients
 where certificate_of_income = '+' and sex = 'чол'
 
+//Знайти кількість квартир у Львові, які здаються  в оренду на день за ціною, меншою 400грн
+
 select count(id_object) as amount
 from realty
 where type_object = 'apartment' and sell_or_rent = 'rent' and price <= '400' and adress_city = 'lviv'
+
+//Знайти прізвища ріелторів, які уклали більше 2-ох угод
+
+//Знайти середню вартість оренди квартири у Києві
+
+//Знайти прізвища власників будинків у Львові
+
+//Знайти квартири, які продаються у місті Луцьку
+
+//Знайти угоди, які були укладені у листопаді
